@@ -32,3 +32,11 @@ mentor-feedback.md        # Mentor yorumları ve alınan aksiyonlar
 errors-and-solutions.md   # Karşılaşılan hatalar ve çözümleri
 general-references.md     # Proje boyunca kullanılan genel kaynaklar
 README.md                 # Bu dosya
+```
+---
+
+## 🗓️ Weekly Reports
+
+- [Week 01 Report](weeks/week-01/report.md)
+
+---
