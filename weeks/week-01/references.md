@@ -45,7 +45,7 @@ Bu haftaki hedefim, kurumsal LLM altyapısı için GPU destekli bir ortam kurmak
   ```bash
   sudo apt update && sudo apt install ubuntu-desktop openssh-server -y
   sudo systemctl enable --now ssh
-````
+ ```
 
 * SSH anahtar yönetimini gerçekleştirdim:
 
