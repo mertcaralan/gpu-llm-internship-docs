@@ -138,14 +138,6 @@ Benchmark sürecini adım adım belgeleyen önemli ekran görüntüleri:
 
 ---
 
-## 📎 Kullanılan Kaynaklar
-
-* [GPU Burn GitHub](https://github.com/wilicc/gpu-burn)
-* [Medium - GPU Passthrough](https://medium.com/@cactusmccoy/gpu-access-from-a-virtual-machine-on-proxmox-server-ubuntu-vm-903bb9783cb3)
-* [Youtube - GPU Burn Setup](https://www.youtube.com/watch?v=kqZNFD0JNBc&t=411s)
-
----
-
 ## 📝 Öğrenilenler
 
 * EFI/GRUB yapılandırmasının dual boot ve GPU passthrough senaryolarındaki kritik rolü.
