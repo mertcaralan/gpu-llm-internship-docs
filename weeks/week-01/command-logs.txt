@@ -1,0 +1,85 @@
+##############################
+# Disk Analizi Komut Çıktıları
+##############################
+
+$ lsblk
+NAME        MAJ:MIN RM   SIZE RO TYPE MOUNTPOINTS
+nvme0n1     259:0    0 931.5G  0 disk
+├─nvme0n1p1 259:1    0   512M  0 part /boot/efi
+└─nvme0n1p2 259:2    0 931G    0 part /
+
+$ fdisk -l
+Disk /dev/nvme0n1: 931.5 GiB, 1000204886016 bytes, 1953525168 sectors
+Disklabel type: gpt
+Disk identifier: ...
+Device         Start        End    Sectors   Size Type
+/dev/nvme0n1p1 2048     1050623   1048576   512M EFI System
+/dev/nvme0n1p2 1050624 1953523711 1952473088 931G Linux filesystem
+
+##############################
+# Proxmox Yedekleme Komutu
+##############################
+
+$ sudo dd if=/dev/nvme0n1 of=/media/sdb1/proxmox_backup.img bs=16M status=progress
+536870912 bytes (537 MB, 512 MiB) copied, 10 s, 53.7 MB/s
+...
+
+##############################
+# GPU Tanıma Komutları
+##############################
+
+$ lspci | grep -i nvidia
+01:00.0 VGA compatible controller: NVIDIA Corporation GeForce RTX 4060 (rev a1)
+01:00.1 Audio device: NVIDIA Corporation Device 22fa (rev a1)
+
+$ nvidia-smi (test öncesi)
+Tue Jun 18 15:12:23 2025
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 550.67       Driver Version: 550.67       CUDA Version: 12.4     |
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+|  0  GeForce RTX 4060    On   | 00000000:01:00.0 Off |                  N/A |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|  0  GeForce RTX 4060    Off  | 00000000:01:00.0 Off |                  N/A |
+| 34%   50C    P8     8W / 115W|      0MiB / 8192MiB  |      0%      Default |
++-----------------------------------------------------------------------------+
+
+$ nvidia-smi (test sırasında)
+Tue Jun 18 15:13:28 2025
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 550.67       Driver Version: 550.67       CUDA Version: 12.4     |
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+|  0  GeForce RTX 4060    On   | 00000000:01:00.0 Off |                  N/A |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|  0  GeForce RTX 4060    On   | 00000000:01:00.0 Off |                  N/A |
+| 62%   82C    P0   115W/115W  |   7193MiB/8192MiB    |   100%      Default  |
++-----------------------------------------------------------------------------+
+
+##############################
+# gpu_burn Çıktısı (60 saniye testi)
+##############################
+
+$ ./gpu_burn 60
+GPU 0: OK
+GPU 0: OK
+GPU 0: OK
+GPU 0: OK
+...
+
+##############################
+# Anlık GPU Kullanımı İzleme (watch nvidia-smi çıktısı)
+##############################
+
+$ watch -n 1 nvidia-smi
+Every 1.0s: nvidia-smi
+Tue Jun 18 15:13:28 2025
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 550.67       Driver Version: 550.67       CUDA Version: 12.4     |
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+|  0  GeForce RTX 4060    On   | 00000000:01:00.0 Off |                  N/A |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|  0  GeForce RTX 4060    On   | 00000000:01:00.0 Off |                  N/A |
+| 62%   82C    P0   115W/115W  |   7193MiB/8192MiB    |   100%      Default  |
++-----------------------------------------------------------------------------+
