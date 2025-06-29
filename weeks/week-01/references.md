@@ -7,4 +7,4 @@
   *Proxmox ortamında GPU passthrough adımlarını anlatan detaylı rehber.*
 
 - [YouTube - GPU Burn Setup](https://www.youtube.com/watch?v=kqZNFD0JNBc&t=411s)  
-  *gpu_burn kurulumu ve kullanımı için video rehber.*
+  *Proxmox’un sıfırdan kurulumu, disk ve ağ yapılandırması gibi temel ayarların adım adım anlatıldığı detaylı rehber.*
