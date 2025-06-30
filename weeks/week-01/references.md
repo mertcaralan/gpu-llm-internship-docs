@@ -8,3 +8,7 @@
 
 - [YouTube - GPU Burn Setup](https://www.youtube.com/watch?v=kqZNFD0JNBc&t=411s)  
   *Proxmox’un sıfırdan kurulumu, disk ve ağ yapılandırması gibi temel ayarların adım adım anlatıldığı detaylı rehber.*
+  
+- [YouTube - How do Graphics Cards Work? Exploring GPU Architecture](https://www.youtube.com/watch?v=QyjyWUrHsFc)  
+  *GPU’nun çekirdek mimarisi, paralel işlem kabiliyetleri ve bellek yönetimi hakkında temel bilgiler sağlayarak Proxmox GPU passthrough sürecinin teknik altyapısını anlamaya yardımcı oldu.*
+
