@@ -1,0 +1,44 @@
+##############################
+# Ollama ve Mistral Kurulum Komutları
+##############################
+
+$ curl -fsSL https://ollama.com/install.sh | sh
+Ollama installation complete.
+
+$ ollama pull mistral
+Pulling mistral: latest...
+Status: Downloaded newer image for mistral:latest
+
+$ ollama run mistral
+> What is an LLM in the context of artificial intelligence?
+### Response: An LLM, or Large Language Model, is an AI system trained on large text datasets to generate human-like responses. It uses neural networks with billions of parameters to understand and produce language.
+
+##############################
+# top Komutu Çıktısı
+##############################
+
+$ top
+top - 15:10:45 up 3 days,  1:45,  1 user,  load average: 0.35, 0.30, 0.28
+Tasks: 235 total,   2 running, 233 sleeping,   0 stopped,   0 zombie
+%Cpu(s):  1.2 us,  0.4 sy,  0.0 ni, 98.2 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
+KiB Mem : 16384000 total,  582000 free, 10200000 used, 5582000 buff/cache
+
+##############################
+# API Performans Test Komutları
+##############################
+
+$ time curl -X POST http://localhost:11434/api/generate -d '{"model":"mistral","prompt":"Hello"}'
+{"response":"Hello! How can I help you?"}
+
+real    0m0.854s
+user    0m0.012s
+sys     0m0.008s
+
+##############################
+# Web UI Başlatma Komutu
+##############################
+
+$ docker compose up -d
+[+] Running 2/2
+ ✔ Network jan-ai_default  Created
+ ✔ Container jan-ai-web    Started
