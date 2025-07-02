@@ -6,7 +6,7 @@
 - [Medium - GPU Passthrough](https://medium.com/@cactusmccoy/gpu-access-from-a-virtual-machine-on-proxmox-server-ubuntu-vm-903bb9783cb3)  
   *Proxmox ortamında GPU passthrough adımlarını anlatan detaylı rehber.*
 
-- [YouTube - GPU Burn Setup](https://www.youtube.com/watch?v=kqZNFD0JNBc&t=411s)  
+- [YouTube - Let's install Proxmox 8.3 in 2025: From Scratch. Spelled out.](https://www.youtube.com/watch?v=kqZNFD0JNBc&t=411s)  
   *Proxmox’un sıfırdan kurulumu, disk ve ağ yapılandırması gibi temel ayarların adım adım anlatıldığı detaylı rehber.*
   
 - [YouTube - How do Graphics Cards Work? Exploring GPU Architecture](https://www.youtube.com/watch?v=QyjyWUrHsFc)  
