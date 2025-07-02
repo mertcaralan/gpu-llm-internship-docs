@@ -38,5 +38,11 @@ README.md                 # Bu dosya
 ## 🗓️ Weekly Reports
 
 - [Week 01 Report](weeks/week-01/report.md)
-
+- [Week 02 Report](weeks/week-02/report.md)
+- [Week 03 Report](weeks/week-03/report.md)
+- [Week 04 Report](weeks/week-04/report.md)
+- [Week 05 Report](weeks/week-05/report.md)
+- [Week 06 Report](weeks/week-06/report.md)
+- [Week 07 Report](weeks/week-07/report.md)
+- [Week 08 Report](weeks/week-08/report.md)
 ---
