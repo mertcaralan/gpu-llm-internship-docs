@@ -1,0 +1,138 @@
+# **Proxmox'a Uzaktan Erişim İçin Port Yönlendirme Komutları**
+
+\##############################
+
+```bash
+# Modem Arayüzüne Giriş
+http://192.168.1.1
+```
+
+```bash
+# Port Yönlendirme Kuralı:
+Eşleştirme Adı: Proxmox
+WAN Adı: WAN_INTERNET
+Dahili IP: 192.168.1.105
+Protokol: TCP
+Harici Port: 8006
+Dahili Port: 8006
+```
+
+```bash
+# Modem Arayüzü Üzerinden Kaydedilen Port Yönlendirme Kuralı
+"Etkinleştir" kutusunu işaretleyip, "Uygula" butonuna tıklayarak kaydettim.
+```
+
+```bash
+# Erişim Testi
+https://ofis_dış_ip:8006
+```
+
+---
+
+##
+
+# **Jan.ai Bağlantı Test Komutları**
+
+\##############################
+
+```bash
+# CURL ile API Testi
+curl http://127.0.0.1:11434/api/tags
+```
+
+#### Çıktı:
+
+```json
+{
+  "tags": ["model", "mistral:7b", "created_at", "2025-07-02T19:34:21.170211666Z"]
+}
+```
+
+---
+
+##
+
+# **Open WebUI Docker Kurulum Komutları**
+
+\##############################
+
+```bash
+# Open WebUI Docker Komutu
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+```
+
+---
+
+##
+
+# **Port Yönlendirme Güncellemesi**
+
+\##############################
+
+```bash
+# Doğru Port Yönlendirme Komutu
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+```
+
+---
+
+##
+
+# **Ollama API Test Komutları**
+
+\##############################
+
+```bash
+# API Performans Testi (Curl)
+curl -X POST http://127.0.0.1:11434/api/generate -d '{"model": "mistral:7b", "prompt": "test", "stream": false}'
+```
+
+#### Çıktı:
+
+```json
+{
+  "model": "mistral:7b",
+  "created_at": "2025-07-02T19:31:24.352195123Z",
+  "response": "",
+  "done": true,
+  "done_reason": "load"
+}
+```
+
+---
+
+##
+
+# **Ollama API Performans Testi (Python)**
+
+\##############################
+
+```bash
+# Python API Testi
+python3 test_mistral_api.py
+```
+
+#### Çıktı:
+
+```plaintext
+Yantı süresi: 4.074739336776733 saniye
+```
+
+---
+
+##
+
+# **Jan.ai Yükleme Hatası**
+
+\##############################
+
+```bash
+# Jan.ai Uygulama Çalıştırma Komutu
+./Jan_0.6.2_amd64.AppImage
+```
+
+#### Hata:
+
+```plaintext
+** (Jan:22605): WARNING **: 21:38:16.637: atk-bridge: get_device_events_reply: unknown signature
+```
