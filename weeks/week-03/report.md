@@ -1,7 +1,7 @@
 # 🗓️ Week 03 Report
 
-**Dates:** 30 Haziran – 5 Temmuz 2025
-**Prepared by:** Mert Çaralan
+* **Dates:** 30 Haziran – 5 Temmuz 2025
+* **Prepared by:** Mert Çaralan
 
 ---
 
@@ -9,7 +9,7 @@
 
 Bu hafta, **Proxmox VM kurulumu**, **Proxmox’a uzaktan erişim için NAT/Port yönlendirme**, **LLM kurulumları**, **Open WebUI ile model entegrasyonu** ve **Veeam Technical Sales Professional (VMTSP)** kursu gibi önemli görevleri başarıyla tamamladım. Ayrıca, **TS EN 50600 Veri Merkezi Tesisleri ve Altyapıları Standardı** eğitimini de başarıyla tamamlayarak **veri merkezi altyapıları** konusunda bilgimi pekiştirdim. Özellikle, **Jan.ai**'daki bağlantı problemleri nedeniyle **Open WebUI**’ye geçiş yapmak zorunda kaldım ve burada da **port yönlendirme hatası** gibi sorunlarla karşılaştım. Bu hataları çözüme kavuşturarak, WebUI üzerinden **Mistral modelinin** doğru şekilde çalışmasını sağladım.
 
-Bu hafta, **teknik zorluklarla başa çıkma** ve **sistem optimizasyonu** konusunda büyük ilerleme kaydettim. Ayrıca, **performans testleri** yaparak **API yanıt sürelerini** optimize ettim ve geçiş sırasında karşılaştığım her sorunla ilgili çözüm süreçlerini belgelerken önemli deneyimler kazandım. **Mentor** ile yapılan görüşmeler ve geri bildirimler doğrultusunda, bu süreçlerin her biri daha sistematik hale getirildi ve iş süreçlerine daha derinlemesine bir katkı sağlandı.
+Ayrıca, **performans testleri** yaparak **API yanıt sürelerini** optimize ettim ve geçiş sırasında karşılaştığım her sorunla ilgili çözüm süreçlerini belgelerken önemli deneyimler kazandım. **Mentor** ile yapılan görüşmeler ve geri bildirimler doğrultusunda, bu süreçlerin her biri daha sistematik hale getirildi ve iş süreçlerine daha derinlemesine bir katkı sağlandı.
 
 ---
 
@@ -23,15 +23,15 @@ Proxmox VM'lerine artan erişim ihtiyacı nedeniyle, dış ağdan erişim sağla
 
 **Yapılan İşlemler:**
 
-* 1.1) **Modem Arayüzüne Giriş Yapılması:**
+### 1.1) **Modem Arayüzüne Giriş Yapılması:**
 
 * Modem arayüzüne erişmek için, **web tarayıcı üzerinden** [http://192.168.1.1](http://192.168.1.1) adresine giderek modem arayüzüne giriş yaptım. Bu işlem için, **admin kullanıcı adı** ve **superonline şifresi** kullanarak yönetici olarak oturum açtım.
 
-* 1.2) **Port Yönlendirme Menü Seçeneği Bulundu:**
+### 1.2) **Port Yönlendirme Menü Seçeneği Bulundu:**
 
 * **Gelişmiş > İşletme Kuralı > IPv4 Port Eşleştirme** menüsüne giderek, dış IP üzerinden gelen bağlantıların iç ağdaki **Proxmox sunucusuna** yönlendirilmesi için gerekli ayarları yaptım.
 
-* 1.3) **Port Yönlendirme Kuralının Oluşturulması:**
+### 1.3) **Port Yönlendirme Kuralının Oluşturulması:**
 
 * **Eşleştirme Adı:** `Proxmox`
 * **WAN Adı:** `WAN_INTERNET`
@@ -40,11 +40,11 @@ Proxmox VM'lerine artan erişim ihtiyacı nedeniyle, dış ağdan erişim sağla
 * **Harici Port Başlangıç/Bitiş:** 8006 - 8006
 * **Dahili Port Başlangıç/Bitiş:** 8006 - 8006
 
-* 1.4) **Port Yönlendirme Kuralının Aktifleştirilmesi:**
+### 1.4) **Port Yönlendirme Kuralının Aktifleştirilmesi:**
 
 * Yapılan **port yönlendirme** kuralını aktif hale getirmek için **“Etkinleştir”** kutusunu işaretledim ve ardından **“Ekle”** butonuna basarak kuralı kaydettim. Değişikliklerin geçerli olması için **“Uygula”** butonuna tıklayarak işlemi tamamladım.
 
-* 1.5) **Erişim Testi:**
+### 1.5) **Erişim Testi:**
 
 * **[WhatIsMyIP.com](https://www.whatismyip.com)** üzerinden ofisin **dış IP adresini** öğrendim ve doğru yapılandırmanın çalışıp çalışmadığını test ettim. Sonrasında, tarayıcıya şu URL’yi yazarak **Proxmox web arayüzüne** bağlandım:
 
@@ -60,28 +60,24 @@ Proxmox VM'lerine artan erişim ihtiyacı nedeniyle, dış ağdan erişim sağla
 
 **Nedensellik:**
 
-Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sürekli **"internal error"** alıyor ve **cortex-server** servisi sürekli çöküyordu. Bu tür bağlantı sorunları, **Jan.ai**'nin **Ollama API** ile uyumsuz çalıştığını gösteriyordu. Bu sebeple, **Jan.ai** yerine **Open WebUI**'yi kullanmaya karar verdim. **API testleri** ve **port yönlendirme** gibi konularda **mentor** ile yaptığımız görüşmeler doğrultusunda daha sağlıklı bir çözüm buldum.
+Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sürekli **"internal error"** alıyor ve **cortex-server** servisi sürekli çöküyordu. Bu tür bağlantı sorunları, **Jan.ai**'nin **Ollama API** ile uyumsuz çalıştığını gösteriyordu. Bu sebeple, **Jan.ai** yerine **Open WebUI**'yi kullanmaya karar verdim. **API testleri** ve **port yönlendirme** gibi konularda mentor ile yaptığımız görüşmeler doğrultusunda daha sağlıklı bir çözüm buldum.
 
 **Yapılan İşlemler:**
 
-* 2.1) **Jan.ai Kurulumu ve Bağlantı Sorunu:**
+### 2.1) **Jan.ai Kurulumu ve Bağlantı Sorunu:**
 
 * **Jan.ai** kurulumunu tamamladım ve GUI üzerinden **Mistral modelini** yüklemeye çalıştım. Ancak model yüklenemedi ve sürekli **“internal error”** mesajları aldım.
+
 * **Hata logları** şu mesajı içeriyordu:
 
   ```
   cortex-server unexpectedly stopped
   ```
-
-* 2.2) **Mentor ile Yapılan Görüşme ve Yönlendirmeler:**
-
-* **Mentor**'uma durumu bildirdim ve **curl** ile yaptığım **API testi** sonrası, API'nin düzgün çalıştığını belirttim. **Mentor**’um, **Open WebUI**’yi kullanmamı önerdi ve **port yönlendirme hatalarını** test etmemi istedi. **Jan.ai** yerine **Open WebUI**'yi kullanarak stabil bir bağlantı sağlayabileceğimi belirtti.
-
-* 2.3) **Çözüm ve Sonuç:**
+  
+### 2.2) **Çözüm ve Sonuç:**
 
 * **Jan.ai**’da yaşadığım **bağlantı sorunlarını** mentoruma bildirdikten sonra, **Open WebUI**’yi kurarak devam etmeye karar verdim.
-
-  * **Open WebUI**'yi Docker üzerinden kurarak **Mistral modelinin stabil çalışmasını** sağladım.
+* **Open WebUI**'yi Docker üzerinden kurarak **Mistral modelinin stabil çalışmasını** sağladım.
 
 ---
 
@@ -93,7 +89,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 **Yapılan İşlemler:**
 
-* 3.1) **Docker ile Open WebUI Kurulumu:**
+### 3.1) **Docker ile Open WebUI Kurulumu:**
 
 * **Docker** kullanarak **Open WebUI** kurulumunu gerçekleştirdim:
 
@@ -101,16 +97,15 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
   docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
   ```
 
-* 3.2) **Port Yönlendirme Sorunu:**
+### 3.2) **Port Yönlendirme Sorunu:**
 
 * İlk başta, **3000 portunu** **container içindeki 3000**’e yönlendirdim. Ancak **backend servisi aslında 8080 portunda** çalışıyordu.
-
-  * **Port yönlendirmesini düzelttim:**
+* **Port yönlendirmesini düzelttim:**
 
     ```bash
     docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
     ```
-* 3.3) **Sonuç:**
+### 3.3) **Sonuç:**
 
 * **Model Seçimi Sorunu:** Port yönlendirmesini düzeltikten sonra, **Open WebUI** üzerinden **Mistral modelini** **görmeye başladım**. Modelin doğru şekilde yüklenmesi, **port yönlendirme hatasının** düzeltilmesiyle mümkün oldu.
 
@@ -120,7 +115,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 **Yapılan İşlemler:**
 
-* 4.1) **Ollama API ile Test:**
+### 4.1) **Ollama API ile Test:**
 
 * **Ollama API** üzerinden yüklü olan modelleri görmek için şu komutu kullandım:
 
@@ -130,7 +125,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 * **Model görünürlüğü** doğrulandı.
 
-* 4.2) **Modelin WebUI’de Görünmemesi:**
+### 4.2) **Modelin WebUI’de Görünmemesi:**
 
 * **Modelin WebUI’de görünmemesi** sorunu, **port yönlendirme hatası** nedeniyle gerçekleşiyordu. Bu sorunu çözmek için **logları** inceleyip, **port yönlendirmesini** doğru yapılandırarak modelin görünmesini sağladım.
 
@@ -225,7 +220,7 @@ Bu kurs, **veri merkezi altyapılarının** nasıl tasarlanacağı ve güvenli b
 
 * Mentor’un Geri Bildirimi ile Sistematik Çalışma:
 
-     * Bora Bey’in geri bildirimleri sayesinde, her aşamada daha sistematik bir yaklaşım geliştirmeye başladım. API performansını test ederken ve port yönlendirme hatalarını giderirken, her sorunun arkasındaki temel sebebi anlamaya çalıştım. Bu süreç, karşılaşılan teknik sorunları sistematik bir şekilde ele almak ve her bir çözümü belgeleyerek gelecekteki stajyerlere referans oluşturmak adına çok öğreticiydi.
+     * Mentor’un geri bildirimleri sayesinde, her aşamada daha sistematik bir yaklaşım geliştirmeye başladım. API performansını test ederken ve port yönlendirme hatalarını giderirken, her sorunun arkasındaki temel sebebi anlamaya çalıştım. Bu süreç, karşılaşılan teknik sorunları sistematik bir şekilde ele almak ve her bir çözümü belgeleyerek gelecekteki stajyerlere referans oluşturmak adına çok öğreticiydi.
 
 * Dokümantasyonun Önemi:
 
