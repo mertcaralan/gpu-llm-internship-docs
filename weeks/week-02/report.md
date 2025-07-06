@@ -1,7 +1,7 @@
 # 🗓️ Week 02 Report
 
-**Dates:** 23–27 June 2025
-**Prepared by:** Mert Çaralan
+* **Dates:** 23–27 June 2025
+* **Prepared by:** Mert Çaralan
 
 ---
 
