@@ -15,7 +15,7 @@ Bu hafta, **teknik zorluklarla başa çıkma** ve **sistem optimizasyonu** konus
 
 ## 🛠️ Adım Adım Yapılan Çalışmalar
 
-### 1️⃣ **Proxmox’a Uzaktan Erişim için NAT/Port Yönlendirme**
+## 1️⃣ **Proxmox’a Uzaktan Erişim için NAT/Port Yönlendirme**
 
 **Nedensellik:**
 
@@ -23,15 +23,15 @@ Proxmox VM'lerine artan erişim ihtiyacı nedeniyle, dış ağdan erişim sağla
 
 **Yapılan İşlemler:**
 
-##### 1.1) **Modem Arayüzüne Giriş Yapılması:**
+* 1.1) **Modem Arayüzüne Giriş Yapılması:**
 
 * Modem arayüzüne erişmek için, **web tarayıcı üzerinden** [http://192.168.1.1](http://192.168.1.1) adresine giderek modem arayüzüne giriş yaptım. Bu işlem için, **admin kullanıcı adı** ve **superonline şifresi** kullanarak yönetici olarak oturum açtım.
 
-##### 1.2) **Port Yönlendirme Menü Seçeneği Bulundu:**
+* 1.2) **Port Yönlendirme Menü Seçeneği Bulundu:**
 
 * **Gelişmiş > İşletme Kuralı > IPv4 Port Eşleştirme** menüsüne giderek, dış IP üzerinden gelen bağlantıların iç ağdaki **Proxmox sunucusuna** yönlendirilmesi için gerekli ayarları yaptım.
 
-##### 1.3) **Port Yönlendirme Kuralının Oluşturulması:**
+* 1.3) **Port Yönlendirme Kuralının Oluşturulması:**
 
 * **Eşleştirme Adı:** `Proxmox`
 * **WAN Adı:** `WAN_INTERNET`
@@ -40,11 +40,11 @@ Proxmox VM'lerine artan erişim ihtiyacı nedeniyle, dış ağdan erişim sağla
 * **Harici Port Başlangıç/Bitiş:** 8006 - 8006
 * **Dahili Port Başlangıç/Bitiş:** 8006 - 8006
 
-##### 1.4) **Port Yönlendirme Kuralının Aktifleştirilmesi:**
+* 1.4) **Port Yönlendirme Kuralının Aktifleştirilmesi:**
 
 * Yapılan **port yönlendirme** kuralını aktif hale getirmek için **“Etkinleştir”** kutusunu işaretledim ve ardından **“Ekle”** butonuna basarak kuralı kaydettim. Değişikliklerin geçerli olması için **“Uygula”** butonuna tıklayarak işlemi tamamladım.
 
-##### 1.5) **Erişim Testi:**
+* 1.5) **Erişim Testi:**
 
 * **[WhatIsMyIP.com](https://www.whatismyip.com)** üzerinden ofisin **dış IP adresini** öğrendim ve doğru yapılandırmanın çalışıp çalışmadığını test ettim. Sonrasında, tarayıcıya şu URL’yi yazarak **Proxmox web arayüzüne** bağlandım:
 
@@ -56,7 +56,7 @@ Proxmox VM'lerine artan erişim ihtiyacı nedeniyle, dış ağdan erişim sağla
 
 ---
 
-### 2️⃣ **Jan.ai ile Bağlantı Sorunları ve Çözümü**
+## 2️⃣ **Jan.ai ile Bağlantı Sorunları ve Çözümü**
 
 **Nedensellik:**
 
@@ -64,7 +64,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 **Yapılan İşlemler:**
 
-##### 2.1) **Jan.ai Kurulumu ve Bağlantı Sorunu:**
+* 2.1) **Jan.ai Kurulumu ve Bağlantı Sorunu:**
 
 * **Jan.ai** kurulumunu tamamladım ve GUI üzerinden **Mistral modelini** yüklemeye çalıştım. Ancak model yüklenemedi ve sürekli **“internal error”** mesajları aldım.
 * **Hata logları** şu mesajı içeriyordu:
@@ -73,11 +73,11 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
   cortex-server unexpectedly stopped
   ```
 
-##### 2.2) **Mentor ile Yapılan Görüşme ve Yönlendirmeler:**
+* 2.2) **Mentor ile Yapılan Görüşme ve Yönlendirmeler:**
 
 * **Mentor**'uma durumu bildirdim ve **curl** ile yaptığım **API testi** sonrası, API'nin düzgün çalıştığını belirttim. **Mentor**’um, **Open WebUI**’yi kullanmamı önerdi ve **port yönlendirme hatalarını** test etmemi istedi. **Jan.ai** yerine **Open WebUI**'yi kullanarak stabil bir bağlantı sağlayabileceğimi belirtti.
 
-##### 2.3) **Çözüm ve Sonuç:**
+* 2.3) **Çözüm ve Sonuç:**
 
 * **Jan.ai**’da yaşadığım **bağlantı sorunlarını** mentoruma bildirdikten sonra, **Open WebUI**’yi kurarak devam etmeye karar verdim.
 
@@ -85,7 +85,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 ---
 
-### 3️⃣ **Open WebUI Kurulumu ve Port Mapping Sorunu**
+## 3️⃣ **Open WebUI Kurulumu ve Port Mapping Sorunu**
 
 **Nedensellik:**
 
@@ -93,7 +93,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 **Yapılan İşlemler:**
 
-##### 3.1) **Docker ile Open WebUI Kurulumu:**
+* 3.1) **Docker ile Open WebUI Kurulumu:**
 
 * **Docker** kullanarak **Open WebUI** kurulumunu gerçekleştirdim:
 
@@ -101,7 +101,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
   docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
   ```
 
-##### 3.2) **Port Yönlendirme Sorunu:**
+* 3.2) **Port Yönlendirme Sorunu:**
 
 * İlk başta, **3000 portunu** **container içindeki 3000**’e yönlendirdim. Ancak **backend servisi aslında 8080 portunda** çalışıyordu.
 
@@ -110,18 +110,17 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
     ```bash
     docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
     ```
-
-##### 3.3) **Sonuç:**
+* 3.3) **Sonuç:**
 
 * **Model Seçimi Sorunu:** Port yönlendirmesini düzeltikten sonra, **Open WebUI** üzerinden **Mistral modelini** **görmeye başladım**. Modelin doğru şekilde yüklenmesi, **port yönlendirme hatasının** düzeltilmesiyle mümkün oldu.
 
 ---
 
-### 4️⃣ **Model Entegrasyonu ve Testi**
+## 4️⃣ **Model Entegrasyonu ve Testi**
 
 **Yapılan İşlemler:**
 
-##### 4.1) **Ollama API ile Test:**
+* 4.1) **Ollama API ile Test:**
 
 * **Ollama API** üzerinden yüklü olan modelleri görmek için şu komutu kullandım:
 
@@ -131,13 +130,13 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 * **Model görünürlüğü** doğrulandı.
 
-##### 4.2) **Modelin WebUI’de Görünmemesi:**
+* 4.2) **Modelin WebUI’de Görünmemesi:**
 
 * **Modelin WebUI’de görünmemesi** sorunu, **port yönlendirme hatası** nedeniyle gerçekleşiyordu. Bu sorunu çözmek için **logları** inceleyip, **port yönlendirmesini** doğru yapılandırarak modelin görünmesini sağladım.
 
 ---
 
-### 5️⃣ **Veeam Technical Sales Professional (VMTSP) Kursu**
+## 5️⃣ **Veeam Technical Sales Professional (VMTSP) Kursu**
 
 **Sonuç:**
 
@@ -145,7 +144,7 @@ Başlangıçta **Jan.ai** üzerinden **LLM yönetmeye** çalıştım. Ancak, sü
 
 ---
 
-### 6️⃣ **TS EN 50600 Veri Merkezi Tesisleri ve Altyapıları Standardı Kursu**
+## 6️⃣ **TS EN 50600 Veri Merkezi Tesisleri ve Altyapıları Standardı Kursu**
 
 **Sonuç:**
 
@@ -153,23 +152,21 @@ Bu kurs, **veri merkezi altyapılarının** nasıl tasarlanacağı ve güvenli b
 
 ---
 
-📝 Mentor İletişimi ve Geri Bildirimler
+## 📝 Mentor İletişimi ve Geri Bildirimler
 
-    Jan.ai bağlantı sorununu mentoruma raporladım ve Open WebUI'yi kullanma kararı aldığımı bildirdim. Web UI üzerinden yaşadığım sorunları ve çözüm sürecini paylaştım.
-
-    Mentor'umun önerileri:
-
-        API performansını ölçmek için curl ve Python araçlarını kullanarak yanıt sürelerini test etmem gerektiğini belirtti.
-
-        WebUI ve LLM arasındaki senkronizasyon için Uvicorn, Gunicorn ve Triton gibi araçları incelememi önerdi.
-
-        Port yönlendirme hatalarını düzelttikten sonra, WebUI ve API entegrasyonunun düzgün çalışması gerektiği konusunda rehberlik etti.
+* Jan.ai bağlantı sorununu mentoruma raporladım ve Open WebUI'yi kullanma kararı aldığımı bildirdim. Web UI üzerinden yaşadığım sorunları ve çözüm sürecini paylaştım.
+  
+* Mentor'umun önerileri:
+  
+     * API performansını ölçmek için curl ve Python araçlarını kullanarak yanıt sürelerini test etmem gerektiğini belirtti.
+     * WebUI ve LLM arasındaki senkronizasyon için Uvicorn, Gunicorn ve Triton gibi araçları incelememi önerdi.
+     * Port yönlendirme hatalarını düzelttikten sonra, WebUI ve API entegrasyonunun düzgün çalışması gerektiği konusunda rehberlik etti.
 
 ---
 
 ## ⚠️ Karşılaşılan Sorunlar ve Çözümler
 
-#### Yapılan Çözümler:
+* Yapılan Çözümler:
 
 1. **Jan.ai Bağlantı Sorunları:**
    **Jan.ai**’yi kullanamama durumu, **Open WebUI** tercih edilerek çözüme kavuşturuldu. **Ollama API** ile stabil bağlantı sağlandı.
@@ -180,7 +177,7 @@ Bu kurs, **veri merkezi altyapılarının** nasıl tasarlanacağı ve güvenli b
 3. **API Performans Sorunları:**
    **Python** ile testler yapılarak, **yanıt süreleri optimize edildi** ve **API performansı iyileştirildi**.
 
-#### Sonuç:
+* Sonuç:
 
 **Jan.ai** ile yaşadığım bağlantı sorunlarını, **Open WebUI** kullanarak çözüme kavuşturdum ve **Mistral modelinin** doğru şekilde çalışmasını sağladım. **Port yönlendirme hatalarını** düzelterek, modelin **WebUI’de görünmesini** sağladım ve backend ile frontend arasındaki iletişimi düzenledim. **API performans sorunlarını** test ederek ve optimize ederek, modelin yanıt süresini hızlandırdım.
 
@@ -188,20 +185,36 @@ Bu kurs, **veri merkezi altyapılarının** nasıl tasarlanacağı ve güvenli b
 
 ## 📝 Öğrenilenler
 
-* **Ollama ve Mistral Kurulum Süreçleri:**
-  Bu hafta, **Ollama** ve **Mistral** kurulumlarını başarıyla tamamladım. **Ollama**’nın **model entegrasyonu** ve **API kullanımı** konusunda daha fazla deneyim kazandım. **Mistral** modelini **Open WebUI** üzerinden çalıştırmak için gereken tüm adımları sistematik olarak öğrendim. Ayrıca, kurulum sırasında karşılaşılan teknik hataları çözerek, yazılım entegrasyonu konusunda daha derin bir anlayış kazandım.
+* Bu hafta boyunca teknik süreçlerin ve sistem entegrasyonlarının her aşamasında önemli dersler aldım. Özellikle karşılaştığım zorluklar ve çözüm süreçleri, bu adımların daha verimli ve sistematik bir şekilde nasıl yönetileceğini anlamama yardımcı oldu.
 
-* **Terminalde LLM Prompt Yönetimi ve Sonsuz Döngü Sorunlarının Çözümü:**
-  **LLM prompt yönetimi** sırasında **sonsuz döngü** sorunuyla karşılaştım. Bu sorunu çözmek için **Ollama**'nın **konfigürasyon dosyasına delimiter** ekledim. Bu sayede modelin verdiği yanıtı **yeni prompt olarak algılaması** engellendi ve terminalde stabil çalışmasını sağladım.
+* Jan.ai ve Open WebUI Geçişi:
 
-* **API Performans Testi Hazırlıkları:**
-  **API performansını** test etmek için **curl** ve **Python** kullanarak **yanıt sürelerini** ölçtüm. Bu testler, **API’nin hızlı yanıt verip vermediğini** analiz etmek adına önem taşıdı. **Mentor**’un önerileri doğrultusunda, API üzerinden **gelen sonuçları optimize etmek** için daha verimli testler yaparak yanıt sürelerini iyileştirdim.
+     * Jan.ai’de yaşadığım bağlantı sorunları ve cortex-server’ın sürekli çökmesi nedeniyle, Open WebUI'ye geçiş yaptım. Bu geçiş süreci, farklı araçlar arasında doğru entegrasyon sağlamak için ne kadar dikkatli ve detaylı çalışmam gerektiğini gösterdi. Bu deneyim, LLM yönetimi ve API bağlantılarını yönetme konusunda güçlü bir temel oluşturdu.
+     * Mentor'un geri bildirimi doğrultusunda, Open WebUI'yi Docker üzerinden kurarak, her adımı doğru şekilde takip ettim ve modelin düzgün çalışmasını sağladım. Bu süreçte Jan.ai yerine Open WebUI’nin daha stabil bir çözüm sunduğunu gözlemledim.
 
-* **Edge AI Donanımları Hakkında İleri Düzey Bilgi:**
-  **Edge AI** donanımları hakkında daha derinlemesine bilgi edinmek amacıyla **EdgeCortix SAKURA-II kartı** hakkında araştırmalar yaptım. Bu kartın, **düşük güç tüketimi** ve **Dynamic Neural Accelerator** mimarisiyle **Edge AI** uygulamaları için sağladığı avantajları öğrendim. Ayrıca, **Kubernetes** ortamlarında veri güvenliği ve **DRaaS** gibi konularda bilgi kazandım.
+* Port Yönlendirme ve Model Entegrasyonu:
 
+     * Port yönlendirme hatalarını düzeltmek, modelin doğru şekilde WebUI’de görünmesini sağlamak için çok kritik bir adımdı. Başlangıçta 3000:3000 port yönlendirmesi yapılırken, backend servisi 8080 portunda çalışıyordu. Bu hatayı fark ettikten sonra, doğru port yönlendirmesini yaparak modelin WebUI üzerinden düzgün şekilde görünmesini sağladım. Bu deneyim, network yapılandırmalarında dikkat edilmesi gereken detayları ve yanıt gecikmelerine neden olan hataları anlamama yardımcı oldu.
+
+* API Performansı ve Testler:
+
+     * API performans testleri yaparak yanıt sürelerini ölçtüm ve çeşitli testlerle performans iyileştirmeleri gerçekleştirdim. Curl ve Python kullanarak testler yaparak, yanıt sürelerinin optimize edilmesi gerektiğini öğrendim. Bu süreç, API performansını izlemek ve optimize etmek için kullanılan araçların gücünü ve önemini bana gösterdi.
+     * Mentor'un önerdiği Uvicorn, Gunicorn, ve Triton gibi araçlarla WebUI ve LLM senkronizasyonu konusunda derinlemesine bir anlayış kazandım. Bu araçların doğru kullanımı, yük dengeleme ve asenkron/senkron dönüşüm konularında önemli ilerlemeler kaydetmeme olanak sağladı. Yüksek performans gerektiren API istekleri için bu araçların nasıl kullanılacağına dair derinlemesine bilgi edinmiş oldum.
+
+* Mentor’un Geri Bildirimi ile Sistematik Çalışma:
+
+     * Bora Bey’in geri bildirimleri sayesinde, her aşamada daha sistematik bir yaklaşım geliştirmeye başladım. API performansını test ederken ve port yönlendirme hatalarını giderirken, her sorunun arkasındaki temel sebebi anlamaya çalıştım. Bu süreç, karşılaşılan teknik sorunları sistematik bir şekilde ele almak ve her bir çözümü belgeleyerek gelecekteki stajyerlere referans oluşturmak adına çok öğreticiydi.
+
+* Dokümantasyonun Önemi:
+
+     * Bu hafta boyunca yazdığım dökümantasyon, hem kendim hem de ekip arkadaşlarım için çok değerli bir referans kaynağı oluşturdu. Proxmox kurulumundan Open WebUI entegrasyonuna, port yönlendirme hatalarının çözülmesinden model entegrasyonuna kadar tüm adımları adım adım belgeledim. Bu dökümantasyon, başka ekip üyeleri veya gelecekteki stajyerler için önemli bir rehber olacak.
+
+* Sürekli İyileştirme ve Öğrenme:
+
+     * Bu hafta boyunca, sürekli iyileştirme felsefesi ile ilerleyerek, her bir hata ve zorluk sonrasında daha fazla bilgi edinmeye çalıştım. Yalnızca teknik bilgimi değil, aynı zamanda proje yönetimi, sorun çözme ve yazılım entegrasyonu becerilerimi de geliştirdim. Mentor'un rehberliğinde test odaklı yaklaşım ve adım adım süreç yönetimi konusunda önemli dersler aldım.
+        
 ---
 
 ## ✅ Sonuç
 
-**Week 02**'de **LLM altyapısını** terminalde sorunsuz şekilde çalıştırmayı başardım. Web UI’deki yanıt sorununu detaylıca analiz ederek **mentoruma raporladım** ve **API performans testlerine hazırlık yaptım.** Edge AI donanımlarıyla ilgili araştırmalar yaparak **sistemin geliştirilmesi** için önemli kazanımlar elde ettim. Bu hafta boyunca hem **teknik bilgi** hem de **problem çözme becerileri** açısından büyük ilerleme kaydettim ve bu süreçleri daha **sistematik ve verimli bir hale getirme** konusunda önemli dersler aldım.
+* Mentorumun geri bildirimi doğrultusunda, her aşamada daha sistematik bir yaklaşım geliştirdim. Bu süreçte karşılaşılan her türlü sorunu çözerek, Open WebUI ve Ollama API entegrasyonunu başarıyla tamamladım. Port yönlendirme hatalarını düzelterek, modelin WebUI üzerinden görünmesini sağladım. Ayrıca, performans iyileştirme ve senkronizasyon konularında Mentor'un önerdiği araçları kullanarak önemli ilerlemeler kaydettim. Bu hafta, teknik zorlukları aşarken öğrendiğim dersler, projelere daha proaktif ve çözüm odaklı yaklaşmamı sağladı.
