@@ -164,6 +164,28 @@ Bu kurs, **veri merkezi altyapılarının** nasıl tasarlanacağı ve güvenli b
 
 ---
 
+## 📸 Ekran Görüntüleri
+
+* **Port Yönlendirme Hatası (Open WebUI)**
+  ![openwebui\_port\_mapping\_error.png](./screenshots/openwebui_port_mapping_error.png)
+
+* **Port Yönlendirme Düzeltildikten Sonra Model Seçimi**
+  ![openwebui\_port\_mapping\_fix.png](./screenshots/openwebui_port_mapping_fix.png)
+
+* **Model Seçiminde "No Result Found" Hatası**
+  ![openwebui\_noresultfound\_error.png](./screenshots/openwebui_noresultfound_error.png)
+
+* **API Test Python Sonuçları**
+  ![ollama\_api\_test\_python\_sonuc](./screenshots/ollama_api_test_python_sonuc.png)
+
+* **API Test Curl Sonuçları**
+  ![ollama\_api\_test\_curl\_sonuc.png](./screenshots/ollama_api_test_curl_sonuc.png)
+
+* **Jan.ai Model Yükleme Hatası**
+  ![jan\_ai\_loading\_model\_error.png](./screenshots/jan_ai_loading_model_error.png)
+
+---
+
 ## ⚠️ Karşılaşılan Sorunlar ve Çözümler
 
 * Yapılan Çözümler:
