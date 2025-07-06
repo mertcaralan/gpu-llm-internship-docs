@@ -1,44 +1,47 @@
 ##############################
-# Ollama ve Mistral Kurulum Komutları
+# Proxmox'a Uzaktan Erişim için NAT/Port Yönlendirme Komutları
 ##############################
 
-$ curl -fsSL https://ollama.com/install.sh | sh
-Ollama installation complete.
+$ sudo nano /etc/network/interfaces
+# Add static IP configuration to Proxmox VM for easier access
+iface eth0 inet static
+    address 192.168.1.105
+    netmask 255.255.255.0
+    gateway 192.168.1.1
 
-$ ollama pull mistral
-Pulling mistral: latest...
-Status: Downloaded newer image for mistral:latest
-
-$ ollama run mistral
-> What is an LLM in the context of artificial intelligence?
-### Response: An LLM, or Large Language Model, is an AI system trained on large text datasets to generate human-like responses. It uses neural networks with billions of parameters to understand and produce language.
-
-##############################
-# top Komutu Çıktısı
-##############################
-
-$ top
-top - 15:10:45 up 3 days,  1:45,  1 user,  load average: 0.35, 0.30, 0.28
-Tasks: 235 total,   2 running, 233 sleeping,   0 stopped,   0 zombie
-%Cpu(s):  1.2 us,  0.4 sy,  0.0 ni, 98.2 id,  0.0 wa,  0.0 hi,  0.2 si,  0.0 st
-KiB Mem : 16384000 total,  582000 free, 10200000 used, 5582000 buff/cache
+$ sudo systemctl restart networking
+# Restart network to apply changes
 
 ##############################
-# API Performans Test Komutları
+# Docker ve Open WebUI Kurulum Komutları
 ##############################
 
-$ time curl -X POST http://localhost:11434/api/generate -d '{"model":"mistral","prompt":"Hello"}'
-{"response":"Hello! How can I help you?"}
+$ curl -fsSL https://get.docker.com | bash
+# Install Docker
 
-real    0m0.854s
-user    0m0.012s
-sys     0m0.008s
+$ sudo systemctl enable --now docker
+# Enable and start Docker service
+
+$ docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+# Run Open WebUI with correct port mapping
 
 ##############################
-# Web UI Başlatma Komutu
+# Port Yönlendirme Testi Komutları
 ##############################
 
-$ docker compose up -d
-[+] Running 2/2
- ✔ Network jan-ai_default  Created
- ✔ Container jan-ai-web    Started
+$ curl http://127.0.0.1:3000
+# Test if Open WebUI is accessible locally
+
+$ curl -X POST http://127.0.0.1:11434/api/generate -d '{"model": "mistral", "prompt": "What is the capital of France?"}'
+{"response": "The capital of France is Paris."}
+# Test API performance and response
+
+##############################
+# Docker Logları ve Web UI Port Mapping Hatası Çözümü
+##############################
+
+$ docker logs open-webui
+# Check logs to investigate why model isn't appearing
+
+$ docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+# Corrected port mapping from 3000:3000 to 3000:8080
